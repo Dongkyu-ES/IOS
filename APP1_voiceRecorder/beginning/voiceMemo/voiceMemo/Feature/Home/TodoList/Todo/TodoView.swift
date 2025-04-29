@@ -119,7 +119,7 @@ private struct SelectDayView : View {
         VStack(spacing: 5){
             HStack{
                 Text("날짜")
-                    .foregroundStyle(Color.customIconGray)
+                    .foregroundColor(Color.customIconGray)
                 
                 Spacer()
             }
@@ -130,7 +130,7 @@ private struct SelectDayView : View {
                     label: {
                         Text("\(todoViewModel.day.formattedDay)")
                             .font(.system(size: 18, weight: .medium))
-                            .foregroundStyle(Color.customGreen)
+                            .foregroundColor(Color.customGreen)
                     }
                 )
                 .popover(isPresented: $todoViewModel.isDisplayCalendar){

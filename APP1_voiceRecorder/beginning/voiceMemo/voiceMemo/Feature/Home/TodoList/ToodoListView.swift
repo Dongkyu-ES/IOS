@@ -87,7 +87,7 @@ private struct AnnouncementView: View {
             Spacer()
         }
         .font(.system(size: 16))
-        .foregroundStyle(Color.customGray2)
+        .foregroundColor(Color.customGray2)
     }
 }
 
@@ -136,14 +136,14 @@ private struct TodoCellView: View {
     
     fileprivate var body: some View {
         VStack(spacing: 20) {
-            HStack {
+            HStack() {
                 if !todoListViewModel.isEditTodoMode {
                     Button(
                         action: {
                             todoListViewModel.seletedBoxTapped(todo)
                         },
                         label: {
-                            todo.selected ? Image(systemName: "selectedBox") : Image(systemName: "unselectedBox")
+                            todo.selected ? Image("selectedBox") : Image("unSelectedBox")
                         }
                     )
                 }
@@ -151,12 +151,12 @@ private struct TodoCellView: View {
                 VStack(alignment: .leading, spacing: 5) {
                     Text(todo.title)
                         .font(.system(size: 16))
-                        .foregroundStyle(todo.selected ? Color.customIconGray : Color.customBlack)
+                        .foregroundColor(todo.selected ? .customIconGray : .customBlack)
                         .strikethrough(todo.selected)
                     
                     Text(todo.convertedDayAndTime)
                         .font(.system(size: 16))
-                        .foregroundStyle(Color.customIconGray)
+                        .foregroundColor(.customIconGray)
                 }
                 
                 Spacer()
@@ -168,7 +168,7 @@ private struct TodoCellView: View {
                             todoListViewModel.todoRemoveSelectedBoxTapped(todo)
                         },
                         label: {
-                            isRemoveSelected ? Image("selectedBox") : Image("unselectedBox")
+                            isRemoveSelected ? Image("selectedBox") : Image("unSelectedBox")
                         }
                     )
                 }

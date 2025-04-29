@@ -143,7 +143,7 @@ private struct StartButtonView: View {
                         .foregroundColor(.customGreen)
                     Image("startHome")
                         .renderingMode(.template)
-                        .foregroundStyle(Color.customGreen)
+                        .foregroundColor(.customGreen)
                 }
             }
         )
