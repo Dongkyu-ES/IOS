@@ -107,9 +107,7 @@ private struct TodoListContentView: View {
             
             ScrollView(.vertical) {
                 VStack(spacing: 0) {
-                    Rectangle()
-                        .fill(Color.customGray0)
-                        .frame(height: 1)
+                    CustomDivider()
                     
                     ForEach(todoListViewModel.todos, id: \.self) { todo in
                         TodoCellView(todo: todo)
@@ -176,9 +174,7 @@ private struct TodoCellView: View {
             .padding(.horizontal, 20)
             .padding(.top, 10)
             
-            Rectangle()
-                .fill(Color.customGray0)
-                .frame(height: 1)
+            CustomDivider()
         }
     }
 }

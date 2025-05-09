@@ -9,14 +9,16 @@ struct OnboardingView: View {
     @StateObject private var onboardingViewModel = OnboardingViewModel()
     @StateObject private var pathModel = PathModel()
     @StateObject private var todoListViewModel = TodoListViewModel()
-    
+    @StateObject private var memoListViewModel = MemoListViewModel()
     
   var body: some View {
       // TODO : - 화면전환 구현필요
       NavigationStack(path: $pathModel.paths) {
 //          OnboardingContentView(onboardingViewModel: onboardingViewModel)
-          TodoListView()
-              .environmentObject(todoListViewModel)
+          MemoListView()
+              .environmentObject(memoListViewModel)
+//          TodoListView()
+//              .environmentObject(todoListViewModel)
               .navigationDestination(
                 for: PathType.self,
                 destination:  { pathType in
@@ -30,9 +32,14 @@ struct OnboardingView: View {
                             .navigationBarBackButtonHidden()
                             .environmentObject(todoListViewModel)
                         
-                    case .memoView :
-                        MemoView()
+                    case let .memoView(isCreateMode, memo) :
+                        MemoView(memoViewModel:
+                                    isCreateMode ?
+                            .init(memo: .init(title: "", content: "", date: .now)
+                                 ) : .init(memo: memo ?? .init(title: "", content: "", date: .now))
+                                 ,isCreatemode: isCreateMode)
                             .navigationBarBackButtonHidden()
+                            .environmentObject(memoListViewModel)
                         
                     }
                 })
